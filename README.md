@@ -21,11 +21,59 @@ The package consists of three files.
 `tarantula_controller.py` imports the two files and utilizes the `functions` to perform specific tasks. The three given tasks are as follows :
 - ### Id search
 `collectInfo(profile)`:
-Accepts the linkedIn id as a parameter, crawls the profile of the user and scrapes information from the profile. This information is organized in a compact human readable form to be stored in a text file `linkedIn_Id_info.txt`. It has three separate portions, `About Info`, `Contacts` and `Important links`
+Accepts the linkedIn id as a parameter, crawls the profile of the user and scrapes information from the profile. This information is organized in a compact human readable form to be stored in a text file `linkedIn_Id_info.txt`. It has three separate portions, `About Info`, `Contacts` and `Important links`. The following is an id search done on a profile I found :
+```
+BASIC INFORMATION____________________________________________________________________________________________________
+
+Name : Rahul Prasad
+
+Software Engineer at SMART CALL CENTER SOLUTIONS PVT LTD
+
+Location : India, Kolkata, West Bengal, India
+
+Work Experience : 
+	Duration : 2/2014 - 9/2016
+	Organization : Avant-Garde Technologies
+	Post : Software Developer
+
+	Duration : 9/2016 - Present
+	Organization : SMART CALL CENTER SOLUTIONS PVT LTD
+	Post : Software Engineer
+
+	Duration : 1/2013 - 1/2014
+	Organization : Wingz Infotech
+	Post : Junior Asp.net Developer
+
+
+Industries : Information Technology & Services
+
+Languages known : 
+	Hindi : None
+	English : None
+	Bangla : None
+
+Skills : HTML, Android Development, ASP.NET, XML, AngularJS, Microsoft SQL Server, Java, AJAX, C#, JavaScript
+
+Projects : 
+	Duration : 6/2015 - Present
+	Title : Staff Management System
+
+
+
+
+Contact Information____________________________________________________________________________________________________
+
+
+
+IMPORTANT LINKS____________________________________________________________________________________________________
+LinkedIn : https://www.linkedin.com/in/rahul-prasad-734208120
+Avant-Garde Technologies : https://www.linkedin.com/company/avant-garde-technologies/
+SMART CALL CENTER SOLUTIONS PVT LTD : https://www.linkedin.com/company/smart-call-center-solutions-pvt-ltd/
+```
 
 - ### Total Search
 `totalSearch(profile, keywords, keepFiles)` :
-Makes a list of the profiles to be searched using `tarantula_search.py.searchProfile(keywords, pages, number)` and iterates through this list to search each of the profiles individually. The data collected is then serialized into a space separated string to ease the search of the keywords. The profiles are arranged in descending order of the no. of keywords found. For example if the keyword list is `python machine_learning kolkata`, a profile-string containing all three of the strings(the `machine_learning` gets converted to `machine learning` before the search occurs) will be placed in a higher priority position than the profile-string containing just one. Finally the keepFiles parameter, if `True`, tells the machine to store the information of all the users in the list in a text file.
+Makes a list of the profiles to be searched using `tarantula_search.searchProfile(keywords, pages, number)` and iterates through this list to search each of the profiles individually. The data collected is then serialized into a space separated string to ease the search of the keywords. The profiles are arranged in descending order of the no. of keywords found. For example if the keyword list is `python machine_learning kolkata`, a profile-string containing all three of the strings(the `machine_learning` gets converted to `machine learning` before the search occurs) will be placed in a higher priority position than the profile-string containing just one. Finally the keepFiles parameter, if `True`, tells the machine to store the information of all the users in the list in a text file.
 A serialized data chunk to search for keywords, after filtering all unnecessary characters and making the string 1-space separated, may look as follows :
 ```
 india chakdaha west bengal india computer software special mention award for 10 days of code by glug nit durgapur 102020 vishwactf  certificate of achievement by vishwactf 2019  2023 indian institute of engineering science and technology iiest shibpur computer engineering bachelor of technology  btech none hindi  limitedworking english  professionalworking bengali  nativeorbilingual anirban sikder none incoming intern wells fargo  expert  codeforces  4 star  codechef  web developer  interested in cybersecurity  student  iiest shibpur student  indian institute of engineering science and technology passionate problem solver and participated in quite a lot of competitive programming competition full stack web developer mostly following mern stack interested in cybersecurity and participated in many capture the flag competition none none anirbansikder5b7773185 52021  52021 helps in visualizing comparison based sorting algorithm sorting algo visualiser httpsvisualisesortingalgonetlifyapp 52021  52021 build your resume by providing details about yourself resume builder application httpsresumebuildanirbanherokuappcom c c programming language javascript bash python programming language nodejs httpsleetcodecomanirban2000 my leetcode profile anirban sikder  leetcode profile httpswwwcodechefcomusersanirban2000 anirban2000  codechef user profile for anirban sikder  codechef anirban2000  codechef user profile for anirban sikder  codechef httpscodeforcescomprofilebreakingcode codeforces programming competitions and contests programming community breakingcode  codeforces httpsgithubcomanirbansikder iiest shibpur  competitive programmer  web developer  anirbansikder anirbansikder  overview birthdateon none birthdayvisibilitysetting none address none wechatcontactinfo none primarytwitterhandle none twitterhandles  phonenumbers none ims none type comlinkedinvoyageridentityprofileprofilecontactinfo emailaddress none entityurn urnlifscontactinfoacoaacu3spsbggqtmfdalhfk6b7yizkvaguepe connectedat none websites none sesamecreditgradeinfo none interests none
@@ -40,6 +88,7 @@ Unlike Total Search, their is no provision for storing the collected information
 
 - The tarantula bot was created only for the purpose of this project and the numnber of connections it has is very limited (0 to be specific -_-)
 hence, it doesn't have access to a lot of profiles.
+- Some exceptions have not been handled yet, which may raise errors and hence, incorrect results.
 
 ## Solutions
 - The credentials of the bot are `tarantula.1110101@protonmail.com:T4ran7ula` (No, you can't change the password, you don't have access to the mail. Try Brute-forcing! Go on!!) if you login manually to the profile and pass a few of the captcha tests, you're good to go. It's better if you're logged in from a browser, while the code runs.
